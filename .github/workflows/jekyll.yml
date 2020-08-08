@@ -1,0 +1,25 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    
+    # Specify the Jekyll source location as a parameter
+    - uses: helaili/jekyll-action@2.0.3
+      env:
+        JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
