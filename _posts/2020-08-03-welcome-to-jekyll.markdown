@@ -1,29 +1,20 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2020-08-03 17:07:38 +0200
-categories: jekyll update
+title:  "An attempt at blogging"
+date:   2020-08-16 11:47:38 +0200
+categories: blogging internal
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+This is my first try and a cold start in the field of blogging, but I'd like to have a little publishing space and I'm really keen on seeing if this works out for me and what my success will be regularly finding interesting things to post and motivating myself writing articles.
 
-Jekyll requires blog post files to be named according to the following format:
+I will publish in English, as I do not have very much of an opportunity of writing English regularly at work, my workplace [be-terna][be-terna] being mostly active in Europe's german-speaking countries (though trying to work on this).
 
-`YEAR-MONTH-DAY-title.MARKUP`
+For this first try, I wanted to have something up simple and quick, so I opted for [Jekyll][jekyll-gh] and the ready-made template [plainwhite][plainwhite-gh].
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+I want to see how it goes, this is the first time I work with a *Static Site Generator*, I'll adapt when I have some content (and maybe even some readers, though this is no goal at all)
 
-Jekyll also offers powerful support for code snippets:
+The blog's source code can be found on [github][blog-gh], obviously there is not much to see yet.
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
+[be-terna]: https://be-terna.com
 [jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[plainwhite-gh]: https://github.com/samarsault/plainwhite-jekyll
+[blog-gh]: https://github.com/ptitmouton/alexis.rinaldoni.xyz
