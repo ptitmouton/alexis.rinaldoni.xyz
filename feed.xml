@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://alexis.rinaldoni.xyz/feed.xml" rel="self" type="application/atom+xml" /><link href="https://alexis.rinaldoni.xyz/" rel="alternate" type="text/html" /><updated>2020-08-24T17:35:22+00:00</updated><id>https://alexis.rinaldoni.xyz/feed.xml</id><title type="html">Alexis Rinaldoni</title><subtitle>This is an attempt to maintain a personal blog.</subtitle><entry><title type="html">Remap keys on mac</title><link href="https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac.html" rel="alternate" type="text/html" title="Remap keys on mac" /><published>2020-08-24T17:29:52+00:00</published><updated>2020-08-24T17:29:52+00:00</updated><id>https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac</id><content type="html" xml:base="https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac.html">&lt;p&gt;My development environment primarily consisting of &lt;a href=&quot;https://neovim.io/&quot;&gt;neovim&lt;/a&gt; and &lt;a href=&quot;https://github.com/tmux/tmux&quot;&gt;tmux&lt;/a&gt;, I rely heavily on the keyboard and custom keybindings.
+Regarding this, I of course want to remap the &lt;a href=&quot;https://en.wikipedia.org/wiki/Caps_Lock&quot;&gt;Caps Lock&lt;/a&gt; key to the Ctrl key, very much easing pressing combinations like &lt;Ctrl-A&gt;, &lt;Ctrl-R&gt; or &lt;Ctrl-T&gt;
+(even for such a blessed pianist like I am :D)&lt;/Ctrl-T&gt;&lt;/Ctrl-R&gt;&lt;/Ctrl-A&gt;&lt;/p&gt;
+
+&lt;p&gt;I had used [karabiner][kabiner-gh] for a while in order to remap the keys on mac OS, unfortunately apple has decided it knows better than the user, and karabiner relying on
+&lt;a href=&quot;https://github.com/pqrs-org/Karabiner-Elements/issues/2331&quot;&gt;kernel extensions&lt;/a&gt; (very much restricted by Apple), Karabiner stopped working when I (not) cleverly installed Big Sur, and won’t work
+on newer macOS versions until a &lt;a href=&quot;https://developer.apple.com/documentation/driverkit&quot;&gt;driverkit&lt;/a&gt; version is developed.&lt;/p&gt;
+
+&lt;p&gt;After a little more research I found I do not even need a tool like karabiner: macOS has a built-in solution to remap keyboard keys: hidutil
+&lt;img src=&quot;/assets/images/2020-08-24-remap-keys-on-mac-hidutil.png&quot; alt=&quot;The hidutil manpage does not tell very much&quot; /&gt;
+The manpage is not very yielding, but there is a technical not on [apple’s developer page][apple-dev-technote-hidutil] describing everything needed.
+There is some lookup to do (ok, of course someone built a [react app][hidutil-generator] for this), but it is pretty straightforward.&lt;/p&gt;
+
+&lt;p&gt;For me, this command does the trick:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;hidutil property --set {&quot;UserKeyMapping&quot;:[{&quot;HIDKeyboardModifierMappingSrc&quot;:0x700000039,&quot;HIDKeyboardModifierMappingDst&quot;:0x7000000E0}]}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I very much like using a standard built-in command rather than a third-party software, especially for something that should be as trivial as remapping caps lock.&lt;/p&gt;
+
+&lt;p&gt;I am not sure how much of a standard hidutil is, but [the manpage][hidutil-man] suggests it is a BSD-thingy.
+Anyways, a quick test showed it was not available on my Arch installation.&lt;/p&gt;
+
+&lt;p&gt;[hidutil][hidutil]:
+[apple-dev-technote-hidutil]: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+[hidutil-generator]: https://github.com/amarsyla/hidutil-key-remapping-generator
+[hidutil-man]: https://manpagez.com/man/1/hidutil/&lt;/p&gt;</content><author><name></name></author><category term="mac" /><category term="keyboard" /><summary type="html">My development environment primarily consisting of neovim and tmux, I rely heavily on the keyboard and custom keybindings. Regarding this, I of course want to remap the Caps Lock key to the Ctrl key, very much easing pressing combinations like , or (even for such a blessed pianist like I am :D)</summary></entry><entry><title type="html">An attempt at blogging</title><link href="https://alexis.rinaldoni.xyz/blogging/internal/2020/08/16/welcome-to-jekyll.html" rel="alternate" type="text/html" title="An attempt at blogging" /><published>2020-08-16T09:47:38+00:00</published><updated>2020-08-16T09:47:38+00:00</updated><id>https://alexis.rinaldoni.xyz/blogging/internal/2020/08/16/welcome-to-jekyll</id><content type="html" xml:base="https://alexis.rinaldoni.xyz/blogging/internal/2020/08/16/welcome-to-jekyll.html">&lt;p&gt;This is my first try and a cold start in the field of blogging, but I’d like to have a little publishing space and I’m really keen on seeing if this works out for me and what my success will be regularly finding interesting things to post and motivating myself writing articles.&lt;/p&gt;
+
+&lt;p&gt;I will publish in English, as I do not have very much of an opportunity of writing English regularly at work, my workplace &lt;a href=&quot;https://be-terna.com&quot;&gt;be-terna&lt;/a&gt; being mostly active in Europe’s german-speaking countries (though trying to work on this).&lt;/p&gt;
+
+&lt;p&gt;For this first try, I wanted to have something up simple and quick, so I opted for &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&lt;/a&gt; and the ready-made template &lt;a href=&quot;https://github.com/samarsault/plainwhite-jekyll&quot;&gt;plainwhite&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I want to see how it goes, this is the first time I work with a &lt;em&gt;Static Site Generator&lt;/em&gt;, I’ll adapt when I have some content (and maybe even some readers, though this is no goal at all)&lt;/p&gt;
+
+&lt;p&gt;The blog’s source code can be found on &lt;a href=&quot;https://github.com/ptitmouton/alexis.rinaldoni.xyz&quot;&gt;github&lt;/a&gt;, obviously there is not much to see yet.&lt;/p&gt;</content><author><name></name></author><category term="blogging" /><category term="internal" /><summary type="html">This is my first try and a cold start in the field of blogging, but I’d like to have a little publishing space and I’m really keen on seeing if this works out for me and what my success will be regularly finding interesting things to post and motivating myself writing articles.</summary></entry></feed>

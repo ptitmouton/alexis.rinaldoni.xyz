@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Remap keys on mac</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Remap keys on mac | Alexis Rinaldoni</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Remap keys on mac" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My development environment primarily consisting of neovim and tmux, I rely heavily on the keyboard and custom keybindings. Regarding this, I of course want to remap the Caps Lock key to the Ctrl key, very much easing pressing combinations like , or (even for such a blessed pianist like I am :D)" />
+<meta property="og:description" content="My development environment primarily consisting of neovim and tmux, I rely heavily on the keyboard and custom keybindings. Regarding this, I of course want to remap the Caps Lock key to the Ctrl key, very much easing pressing combinations like , or (even for such a blessed pianist like I am :D)" />
+<link rel="canonical" href="https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac.html" />
+<meta property="og:url" content="https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac.html" />
+<meta property="og:site_name" content="Alexis Rinaldoni" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-24T17:29:52+00:00" />
+<script type="application/ld+json">
+{"headline":"Remap keys on mac","dateModified":"2020-08-24T17:29:52+00:00","datePublished":"2020-08-24T17:29:52+00:00","url":"https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac.html","description":"My development environment primarily consisting of neovim and tmux, I rely heavily on the keyboard and custom keybindings. Regarding this, I of course want to remap the Caps Lock key to the Ctrl key, very much easing pressing combinations like , or (even for such a blessed pianist like I am :D)","mainEntityOfPage":{"@type":"WebPage","@id":"https://alexis.rinaldoni.xyz/mac/keyboard/2020/08/24/remap-keys-on-mac.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+  <main class="container">
+    <section class="about">
+      <a href="/"><img src="/assets/avatar.png" alt="Alexis Rinaldoni"></a>
+      <h2 id="title">
+        <a href="/">Alexis Rinaldoni</a>
+      </h2>
+      <p class="tagline">Developer.</p>
+      <ul class="social"><a href="https://github.com/ptitmouton" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://twitter.com/ptitmoutonasnl" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p>&copy;
+        2020</p></section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/mac/keyboard/2020/08/24/remap-keys-on-mac.html">
+    <h2 class="post-title">Remap keys on mac</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>24 Aug 2020</div><ul class="post-categories"><li>mac</li><li>keyboard</li></ul></div>
+  <div class="post">
+    <p>My development environment primarily consisting of <a href="https://neovim.io/">neovim</a> and <a href="https://github.com/tmux/tmux">tmux</a>, I rely heavily on the keyboard and custom keybindings.
+Regarding this, I of course want to remap the <a href="https://en.wikipedia.org/wiki/Caps_Lock">Caps Lock</a> key to the Ctrl key, very much easing pressing combinations like <Ctrl-A>, <Ctrl-R> or <Ctrl-T>
+(even for such a blessed pianist like I am :D)</Ctrl-T></Ctrl-R></Ctrl-A></p>
+
+<p>I had used [karabiner][kabiner-gh] for a while in order to remap the keys on mac OS, unfortunately apple has decided it knows better than the user, and karabiner relying on
+<a href="https://github.com/pqrs-org/Karabiner-Elements/issues/2331">kernel extensions</a> (very much restricted by Apple), Karabiner stopped working when I (not) cleverly installed Big Sur, and won’t work
+on newer macOS versions until a <a href="https://developer.apple.com/documentation/driverkit">driverkit</a> version is developed.</p>
+
+<p>After a little more research I found I do not even need a tool like karabiner: macOS has a built-in solution to remap keyboard keys: hidutil
+<img src="/assets/images/2020-08-24-remap-keys-on-mac-hidutil.png" alt="The hidutil manpage does not tell very much" />
+The manpage is not very yielding, but there is a technical not on [apple’s developer page][apple-dev-technote-hidutil] describing everything needed.
+There is some lookup to do (ok, of course someone built a [react app][hidutil-generator] for this), but it is pretty straightforward.</p>
+
+<p>For me, this command does the trick:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hidutil property --set {"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E0}]}
+</code></pre></div></div>
+
+<p>I very much like using a standard built-in command rather than a third-party software, especially for something that should be as trivial as remapping caps lock.</p>
+
+<p>I am not sure how much of a standard hidutil is, but [the manpage][hidutil-man] suggests it is a BSD-thingy.
+Anyways, a quick test showed it was not available on my Arch installation.</p>
+
+<p>[hidutil][hidutil]:
+[apple-dev-technote-hidutil]: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+[hidutil-generator]: https://github.com/amarsyla/hidutil-key-remapping-generator
+[hidutil-man]: https://manpagez.com/man/1/hidutil/</p>
+
+  </div></div>
+
+    </section>
+  </main>
+</body>
+
+</html>
